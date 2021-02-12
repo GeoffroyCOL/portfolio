@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Service\CategoryService;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,8 +39,11 @@ class CategoryController extends AbstractController
     }
     
     /**
+     * addCategory
+     *
      * @Route("/admin/add/category", name="add.category")
      *
+     * @param  Request $request
      * @return Response
      */
     public function addCategory(Request $request): Response
@@ -48,7 +52,7 @@ class CategoryController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->categoryService->add($form->getData());
+            $this->categoryService->persist($form->getData());
             $this->addFlash('success', 'La categorie à bien été ajoutée.');
             return $this->redirectToRoute('list.category');
         }
@@ -56,6 +60,32 @@ class CategoryController extends AbstractController
         return $this->render('back/category/gestionCategory.html.twig', [
             'form'      => $form->createView(),
             'pageTitle' => 'Ajouter une catégorie'
+        ]);
+    }
+    
+    /**
+     * editCategory
+     *
+     * @Route("/admin/edit/category/{id}", name="edit.category")
+     *
+     * @param  Request $request
+     * @param  Category $category
+     * @return Response
+     */
+    public function editCategory(Request $request, Category $category): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->categoryService->persist($category);
+            $this->addFlash('success', 'La categorie à bien été modfiée.');
+            return $this->redirectToRoute('list.category');
+        }
+
+        return $this->render('back/category/gestionCategory.html.twig', [
+            'form'      => $form->createView(),
+            'pageTitle' => 'Modifier une catégorie'
         ]);
     }
 }

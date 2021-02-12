@@ -31,12 +31,12 @@ class CategoryService
     }
     
     /**
-     * add
+     * persist - Permet d'ajouter et de modifer une catégorie
      *
      * @param  Category $category
      * @return void
      */
-    public function add(Category $category): void
+    public function persist(Category $category): void
     {
         $category->setSlug(strtolower($this->slugger->slug($category->getName())));
         
