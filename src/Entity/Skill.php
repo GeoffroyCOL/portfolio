@@ -28,7 +28,7 @@ class Skill
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      *
      * @Assert\NotBlank(
      *      message="Le nom de la compétence ne peut pas être vide !"
@@ -42,7 +42,7 @@ class Skill
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(
      *      message="La couleur associée ne peut pas être vide !"

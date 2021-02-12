@@ -2,13 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjectRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @UniqueEntity(
+ *      fields={"title"},
+ *      message="Ce projet existe déjà."
+ * )
  */
 class Project
 {
@@ -20,7 +26,16 @@ class Project
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * 
+     * @Assert\NotBlank(
+     *      message="Le titre du projet ne peut pas être vide !"
+     * )
+     *
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage = "Le titre du projet doit être supérieur à {{ limit }} charactères."
+     * )
      */
     private $title;
 
@@ -31,6 +46,15 @@ class Project
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @Assert\NotBlank(
+     *      message="Le contenue du projet ne peut pas être vide !"
+     * )
+     *
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "Le contenue du projet doit être supérieur à {{ limit }} charactères."
+     * )
      */
     private $content;
 
@@ -41,6 +65,10 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
+     * @Assert\Url(
+     *    message = "L'url du projet n'est pas valide.",
+     * )
      */
     private $website;
 
@@ -52,6 +80,8 @@ class Project
     /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * 
+     * @Assert\Valid
      */
     private $featured;
 
@@ -63,6 +93,10 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
+     * @Assert\Url(
+     *    message = "L'url du repository n'est pas valide.",
+     * )
      */
     private $github;
 
