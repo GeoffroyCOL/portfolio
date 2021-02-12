@@ -6,6 +6,8 @@
 
     <h2>Liste des catégories</h2>
 
+    <a href="{{ path('add.category') }}">Ajouter une catégorie</a>
+
     {% for category in categories %}
         <p>{{ category.name }}</p>
     {% endfor %}

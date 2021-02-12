@@ -2,11 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @UniqueEntity(
+ *      fields={"name"},
+ *      message="Le nom de cette catégorie existe déjà."
+ * )
  */
 class Category
 {
@@ -18,7 +24,16 @@ class Category
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank(
+     *      message="Le nom de la catégorie ne peut pas être vide !"
+     * )
+     *
+     *  @Assert\Length(
+     *      min = 3,
+     *      minMessage = "Le nom de la catégorie doit être supérieur à {{ limit }} charactères."
+     * )
      */
     private $name;
 

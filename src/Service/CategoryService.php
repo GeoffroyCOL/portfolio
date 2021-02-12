@@ -2,18 +2,22 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CategoryService
 {
     private $manager;
     private $repository;
+    private $slugger;
 
-    public function __construct(EntityManagerInterface $manager, CategoryRepository $repository)
+    public function __construct(EntityManagerInterface $manager, CategoryRepository $repository, SluggerInterface $slugger)
     {
         $this->manager = $manager;
         $this->repository = $repository;
+        $this->slugger = $slugger;
     }
     
     /**
@@ -24,5 +28,19 @@ class CategoryService
     public function getAll(): ?array
     {
         return $this->repository->findAll();
+    }
+    
+    /**
+     * add
+     *
+     * @param  Category $category
+     * @return void
+     */
+    public function add(Category $category): void
+    {
+        $category->setSlug(strtolower($this->slugger->slug($category->getName())));
+        
+        $this->manager->persist($category);
+        $this->manager->flush();
     }
 }
