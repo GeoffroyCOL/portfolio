@@ -9,7 +9,7 @@
 
     {% if skills is defined %}
         {% for skill in skills %}
-            <p><a>{{ skill.name }}</a></p>
+            <p><a href="{{ path('edit.skill', {id: skill.id}) }}">{{ skill.name }}</a></p>
         {% endfor %}
     {% endif %}
 

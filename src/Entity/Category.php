@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  * @UniqueEntity(
  *      fields={"name"},
- *      message="Le nom de cette catégorie existe déjà."
+ *      message="Cette catégorie existe déjà."
  * )
  */
 class Category
@@ -30,7 +30,7 @@ class Category
      *      message="Le nom de la catégorie ne peut pas être vide !"
      * )
      *
-     *  @Assert\Length(
+     * @Assert\Length(
      *      min = 3,
      *      minMessage = "Le nom de la catégorie doit être supérieur à {{ limit }} charactères."
      * )

@@ -45,7 +45,7 @@ class SkillType extends AbstractType
     {
         $choices = Skill::LEVEL;
         $output = [];
-        foreach ($choices as $key => $value) {
+        foreach ($choices as $value) {
             $output[$value] = $value;
         }
 

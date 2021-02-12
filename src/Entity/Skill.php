@@ -2,15 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SkillRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
+ * @UniqueEntity(
+ *      fields={"name"},
+ *      message="Cette compétence existe déjà."
+ * )
  */
 class Skill
 {
-
     const LEVEL = [
         'junior', 'confirmé', 'sénior'
     ];
@@ -24,21 +29,46 @@ class Skill
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *      message="Le nom de la compétence ne peut pas être vide !"
+     * )
+     *
+     * @Assert\Length(
+     *      min = 3,
+     *      minMessage = "Le nom de la compétence doit être supérieur à {{ limit }} charactères."
+     * )
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank(
+     *      message="La couleur associée ne peut pas être vide !"
+     * )
      */
     private $color;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *      message="L'icon associé ne peut pas être vide !"
+     * )
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *      message="Le niveau associé ne peut pas être vide !"
+     * )
+     *
+     * @Assert\Choice(
+     *      choices=Skill::LEVEL, message="Vous ne pouvez pas choisir cette valeur."
+     * )
      */
     private $level;
     
