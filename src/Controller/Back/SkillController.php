@@ -9,7 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * SkillController
+ * 
+ * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
+ */
 class SkillController extends AbstractController
 {
     private $skillService;
@@ -78,5 +85,20 @@ class SkillController extends AbstractController
             'form'      => $form->createView(),
             'pageTitle' => 'Modifier une compétence'
         ]);
+    }
+    
+    /**
+     * deleteSkill
+     *
+     * @Route("/admin/delete/skill/{id}", name="delete.skill")
+     * 
+     * @param  Skill $skill
+     * @return Response
+     */
+    public function deleteSkill(Skill $skill): Response
+    {
+        $this->skillService->delete($skill);
+        $this->addFlash('success', 'La compétence à bien été supprimée.');
+        return $this->redirectToRoute('list.skill');
     }
 }

@@ -33,9 +33,21 @@ class SkillService
      * @param  Skill $skill
      * @return void
      */
-    public function persist(Skill $skill)
+    public function persist(Skill $skill): void
     {
         $this->manager->persist($skill);
+        $this->manager->flush();
+    }
+    
+    /**
+     * delete
+     *
+     * @param  Skill $skill
+     * @return void
+     */
+    public function delete(Skill $skill): void
+    {
+        $this->manager->remove($skill);
         $this->manager->flush();
     }
 }
