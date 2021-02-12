@@ -9,7 +9,7 @@
 
     {% if projects is defined %}
         {% for project in projects %}
-            <p><a href="{{ path('edit.project', {id: project.id}) }}">{{ project.title }}</a></p>
+            <p><a href="{{ path('edit.project', {id: project.id}) }}">{{ project.title }}</a> <a href="{{ path('delete.project', {id: project.id}) }}">Supprimer</a></p>
         {% endfor %}
     {% endif %}
 

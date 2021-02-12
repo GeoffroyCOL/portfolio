@@ -59,4 +59,16 @@ class ProjectService
         $project->setSlug(strtolower($this->slugger->slug($project->getTitle())));
         $this->manager->flush();
     }
+    
+    /**
+     * delete
+     *
+     * @param  Project $project
+     * @return void
+     */
+    public function delete(Project $project): void
+    {
+        $this->manager->remove($project);
+        $this->manager->flush();
+    }
 }

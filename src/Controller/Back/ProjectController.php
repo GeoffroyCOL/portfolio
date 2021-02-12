@@ -90,6 +90,20 @@ class ProjectController extends AbstractController
             'form'      => $form->createView(),
             'pageTitle' => 'Modifier un projet'
         ]);
-
+    }
+    
+    /**
+     * deleteProject
+     * 
+     * @Route("/admin/delete/project/{id}", name="delete.project")
+     *
+     * @param  Project $project
+     * @return Response
+     */
+    public function deleteProject(Project $project): Response
+    {
+        $this->projectService->delete($project);
+        $this->addFlash('success', 'Le projet à bien été supprimé.');
+        return $this->redirectToRoute('list.project');
     }
 }
