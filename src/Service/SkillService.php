@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Skill;
 use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -24,5 +25,17 @@ class SkillService
     public function getAll(): ?array
     {
         return $this->repository->findAll();
+    }
+    
+    /**
+     * persist
+     *
+     * @param  Skill $skill
+     * @return void
+     */
+    public function persist(Skill $skill)
+    {
+        $this->manager->persist($skill);
+        $this->manager->flush();
     }
 }
