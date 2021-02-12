@@ -88,4 +88,19 @@ class CategoryController extends AbstractController
             'pageTitle' => 'Modifier une catégorie'
         ]);
     }
+    
+    /**
+     * deleteCategory
+     *
+     * @Route("/admin/delete/category/{id}", name="delete.category")
+     *
+     * @param  Category $category
+     * @return Response
+     */
+    public function deleteCategory(Category $category): Response
+    {
+        $this->categoryService->delete($category);
+        $this->addFlash('success', 'La categorie à bien été supprimée.');
+        return $this->redirectToRoute('list.category');
+    }
 }

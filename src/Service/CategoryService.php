@@ -43,4 +43,16 @@ class CategoryService
         $this->manager->persist($category);
         $this->manager->flush();
     }
+    
+    /**
+     * delete
+     *
+     * @param  Category $category
+     * @return void
+     */
+    public function delete(Category $category): void
+    {
+        $this->manager->remove($category);
+        $this->manager->flush();
+    }
 }
