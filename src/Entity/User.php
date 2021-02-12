@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -37,13 +38,37 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *      message="Votre adresse email ne peut pas être vide !"
+     * )
+     *
+     * @Assert\Email(
+     *     message = "La valeur de votre email n'est pas au bon format"
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank(
+     *      message="Votre description ne peut pas être vide !"
+     * )
      */
     private $description;
+    
+    /**
+     * newPassword
+     *
+     * @Assert\Regex(
+     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{10,}$/",
+     *     message="Votre mot de passe n'est pas au bon format !"
+     * )
+     *
+     * @var mixed
+     */
+    private $newPassword;
     
     /**
      * getId
@@ -59,7 +84,7 @@ class User implements UserInterface
      * A visual identifier that represents this user.
      *
      * @see UserInterface
-     * 
+     *
      * @return string
      */
     public function getUsername(): string
@@ -82,7 +107,7 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
-     * 
+     *
      * @return array
      */
     public function getRoles(): array
@@ -109,7 +134,7 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
-     * 
+     *
      * @return string
      */
     public function getPassword(): string
@@ -135,7 +160,7 @@ class User implements UserInterface
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
-     * 
+     *
      * @return string|null
      */
     public function getSalt(): ?string
@@ -165,10 +190,10 @@ class User implements UserInterface
     /**
      * setEmail
      *
-     * @param  string $email
+     * @param  string|null $email
      * @return self
      */
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -188,12 +213,35 @@ class User implements UserInterface
     /**
      * setDescription
      *
-     * @param  string $description
+     * @param  string|null $description
      * @return self
      */
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of newPassword
+     *
+     * @return string|null
+     */
+    public function getNewPassword(): ?string
+    {
+        return $this->newPassword;
+    }
+
+    /**
+     * Set the value of newPassword
+     *
+     * @param  string|null $newPassword
+     * @return  self
+     */
+    public function setNewPassword(?string $newPassword)
+    {
+        $this->newPassword = $newPassword;
 
         return $this;
     }

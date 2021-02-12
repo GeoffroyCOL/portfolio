@@ -9,12 +9,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
+/**
+ * DashboardController
+ * 
+ * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
+ */
 class DashboardController extends AbstractController
 {
     /**
      * @Route("/dashboard", name="dashboard")
-     * 
-     * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
      * 
      * @return Response
      */

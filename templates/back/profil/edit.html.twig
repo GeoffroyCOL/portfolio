@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+
+        {{ form(form) }}
+
+    {% else %}
+
+        <p>Vous n'avez pas l'accès à cette partie de l'application !</p>
+
+    {% endif %}
+
+{% endblock %}
