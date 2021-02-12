@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SkillController!{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des compétences</h2>
+
+    {% if skills is defined %}
+        {% for skill in skills %}
+            <p><a>{{ skill.name }}</a></p>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
