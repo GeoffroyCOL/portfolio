@@ -47,4 +47,16 @@ class ProjectService
         $this->manager->persist($project);
         $this->manager->flush();
     }
+    
+    /**
+     * edit
+     *
+     * @param  Project $project
+     * @return void
+     */
+    public function edit(Project $project): void
+    {
+        $project->setSlug(strtolower($this->slugger->slug($project->getTitle())));
+        $this->manager->flush();
+    }
 }

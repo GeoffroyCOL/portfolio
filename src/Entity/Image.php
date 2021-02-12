@@ -43,9 +43,7 @@ class Image
      * 
      * @Assert\Image(
      *      minRatio = 1,
-     *      minRatioMessage = "Cette image doit avoir un ratio minimum de {{ min_ratio }} pour {{ ratio }} actuellement",
-     *      mimeTypes = "jpeg",
-     *      mimeTypesMessage = "Cette image doit avoir une extension en jpeg"
+     *      minRatioMessage = "Cette image doit avoir un ratio minimum de {{ min_ratio }} pour {{ ratio }} actuellement"
      * )
      */
     private $imageFile;
@@ -119,19 +117,14 @@ class Image
     
     /**
      * setImage
-     *
-     * @param  string $image
-     * @return void
      */
-    public function setImage(string $image): void
+    public function setImage($image)
     {
         $this->image = $image;
     }
     
     /**
      * getImage
-     *
-     * @return string
      */
     public function getImage()
     {

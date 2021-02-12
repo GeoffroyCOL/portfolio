@@ -9,7 +9,7 @@
 
     {% if projects is defined %}
         {% for project in projects %}
-            <p>{{ project.title }}</p>
+            <p><a href="{{ path('edit.project', {id: project.id}) }}">{{ project.title }}</a></p>
         {% endfor %}
     {% endif %}
 

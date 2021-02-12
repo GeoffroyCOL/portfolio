@@ -2,7 +2,9 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Form\EditProjectType;
 use App\Service\ProjectService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,5 +64,32 @@ class ProjectController extends AbstractController
             'form'      => $form->createView(),
             'pageTitle' => 'Ajouter un projet'
         ]);
+    }
+    
+    /**
+     * editProject
+     * 
+     * @Route("/admin/edit/project/{id}", name="edit.project")
+     *
+     * @param  Request $request
+     * @param  Project $project
+     * @return Response
+     */
+    public function editProject(Request $request, Project $project): Response
+    {
+        $form = $this->createForm(EditProjectType::class, $project);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->projectService->edit($form->getData());
+            $this->addFlash('success', 'Le projet à bien été modifié.');
+            return $this->redirectToRoute('list.project');
+        }
+
+        return $this->render('back/project/gestionProject.html.twig', [
+            'form'      => $form->createView(),
+            'pageTitle' => 'Modifier un projet'
+        ]);
+
     }
 }
