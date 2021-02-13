@@ -22,7 +22,7 @@
 
                 {% if socials is defined %}
                     <p class="font-weight-bold text-uppercase text-info mb-0">Réseau sociaux</p>
-                    <div class="table-responsive-sm mb-5">
+                    <div class="table-responsive mb-5">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -38,7 +38,10 @@
                                         <td>{{ loop.index }}</td>
                                         <td><a href="{{ path('edit.social', {id: social.id}) }}">{{ social.name }}</a></td>
                                         <td>{{ social.icon | raw }}</td>
-                                        <td><a class="btn btn-sm btn-outline-info" href="{{ social.url }}">Voir</a></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-info" href="{{ social.url }}">Voir</a>
+                                            <a class="btn btn-sm btn-danger" href="{{ path('delete.social', {id: social.id}) }}">Supprimer</a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -53,7 +56,7 @@
 
             <footer>
                 <a class="btn btn-sm btn-outline-info" href="{{ path('edit.profil') }}">Modifier</a>
-                <a class="btn btn-sm btn-info" href="{{ path('app_logout') }}">Déconnexion</a>
+                <a class="btn btn-sm btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
             </footer>
         </section>
 

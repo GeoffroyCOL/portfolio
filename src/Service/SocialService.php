@@ -38,4 +38,16 @@ class SocialService
         $this->manager->persist($social);
         $this->manager->flush();
     }
+    
+    /**
+     * delete
+     *
+     * @param  Social $social
+     * @return void
+     */
+    public function delete(Social $social): void
+    {
+        $this->manager->remove($social);
+        $this->manager->flush();
+    }
 }

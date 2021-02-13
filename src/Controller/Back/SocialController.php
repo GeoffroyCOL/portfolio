@@ -23,7 +23,7 @@ class SocialController extends AbstractController
      * addSocial
      *
      * @Route("/admin/add/social", name="add.social")
-     * 
+     *
      * @param  Request $request
      * @return Response
      */
@@ -48,7 +48,8 @@ class SocialController extends AbstractController
      * editSocial
      *
      * @Route("/admin/edit/social/{id}", name="edit.social")
-     * 
+     *
+     * @param  Social $social
      * @param  Request $request
      * @return Response
      */
@@ -67,5 +68,20 @@ class SocialController extends AbstractController
             'form'      => $form->createView(),
             'action'    => 'Modifier'
         ]);
+    }
+
+    /**
+     * deleteSocial
+     *
+     * @Route("/admin/delete/social/{id}", name="delete.social")
+     *
+     * @param  Social $social
+     * @return Response
+     */
+    public function deleteSocial(Social $social): Response
+    {
+        $this->socialService->delete($social);
+        $this->addFlash('success', 'Le réseau social à bien été supprimé.');
+        return $this->redirectToRoute('dashboard');
     }
 }
