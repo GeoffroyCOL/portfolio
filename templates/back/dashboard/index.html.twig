@@ -36,7 +36,7 @@
                                 {% for social in socials %}
                                     <tr>
                                         <td>{{ loop.index }}</td>
-                                        <td>{{ social.name }}</td>
+                                        <td><a href="{{ path('edit.social', {id: social.id}) }}">{{ social.name }}</a></td>
                                         <td>{{ social.icon | raw }}</td>
                                         <td><a class="btn btn-sm btn-outline-info" href="{{ social.url }}">Voir</a></td>
                                     </tr>

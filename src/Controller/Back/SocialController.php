@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Social;
 use App\Form\SocialType;
 use App\Service\SocialService;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,13 +34,38 @@ class SocialController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->socialService->persist($form->getData());
-            $this->addFlash('success', 'Le réseau social à bien été modifié.');
+            $this->addFlash('success', 'Le réseau social à bien été ajouté.');
             return $this->redirectToRoute('dashboard');
         }
 
         return $this->render('back/social/gestionSocial.html.twig', [
             'form'      => $form->createView(),
             'action'    => 'Ajouter'
+        ]);
+    }
+
+    /**
+     * editSocial
+     *
+     * @Route("/admin/edit/social/{id}", name="edit.social")
+     * 
+     * @param  Request $request
+     * @return Response
+     */
+    public function editSocial(Request $request, Social $social): Response
+    {
+        $form = $this->createForm(SocialType::class, $social);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->socialService->persist($form->getData());
+            $this->addFlash('success', 'Le réseau social à bien été modifié.');
+            return $this->redirectToRoute('dashboard');
+        }
+
+        return $this->render('back/social/gestionSocial.html.twig', [
+            'form'      => $form->createView(),
+            'action'    => 'Modifier'
         ]);
     }
 }
