@@ -1,20 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
-
     {% if is_granted("ROLE_SUPER_ADMIN") %}
-        <div>
-            <a href={{ path('edit.profil') }}>Modifier</a>
-            <a href={{ path('list.category') }}>Categories</a>
-            <a href={{ path('list.skill') }}>Compétences</a>
-            <a href={{ path('list.project') }}>Projets</a>
 
-        </div>
-    {% else %}
+        {% include 'back/navigation.html.twig' %}
 
-        <p>Vous n'avez pas l'accès à cette partie de l'application !</p>
+        <section class="container my-5">
+            <header>
+                <h1>Tableau de board</h1>
+            </header>
+
+            <div class="my-5">
+                <h2>Mon profil</h2>
+
+                <p class="font-weight-bold text-uppercase text-info mb-0">Adresse email</p>
+                <p>{{ app.user.email }}</p>
+
+                <p class="font-weight-bold text-uppercase text-info mb-0">Réseau sociaux</p>
+
+                <p class="font-weight-bold text-uppercase text-info mb-0">Description</p>
+                <p>{{ app.user.description }}</p>
+            </div>
+
+            <footer>
+
+            </footer>
+        </section>
+
 
     {% endif %}
 
