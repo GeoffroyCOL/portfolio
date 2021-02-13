@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
-
     {% if is_granted("ROLE_SUPER_ADMIN") %}
 
-        <style>
-            .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-            .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-        </style>
+        {% include 'back/navigation.html.twig' %}
 
-        <div class="example-wrapper">
-            <h1>Hello {{ controller_name }}! ✅</h1>
+        <section class="container my-5">
+            <header>
+                <h1>Tableau de board</h1>
+            </header>
 
-            This friendly message is coming from:
-            <ul>
-                <li>Your controller at <code><a href="{{ 'C:/Users/Colpart/Desktop/portfolio/my-portfolio/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
-                <li>Your template at <code><a href="{{ 'C:/Users/Colpart/Desktop/portfolio/my-portfolio/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
-            </ul>
+            <div class="my-5">
+                <h2>Mon profil</h2>
 
-            <a href={{ path('edit.profil') }}>Modifier</a>
-            <a href={{ path('list.category') }}>Categories</a>
-            <a href={{ path('list.skill') }}>Compétences</a>
-            <a href={{ path('list.project') }}>Projets</a>
+                <p class="font-weight-bold text-uppercase text-info mb-0">Adresse email</p>
+                <p>{{ app.user.email }}</p>
 
-        </div>
-    {% else %}
+                <p class="font-weight-bold text-uppercase text-info mb-0">Réseau sociaux</p>
 
-        <p>Vous n'avez pas l'accès à cette partie de l'application !</p>
+                <p class="font-weight-bold text-uppercase text-info mb-0">Description</p>
+                <p>{{ app.user.description }}</p>
+            </div>
+
+            <footer>
+
+            </footer>
+        </section>
+
 
     {% endif %}
 
