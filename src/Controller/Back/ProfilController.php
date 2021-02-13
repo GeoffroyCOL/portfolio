@@ -27,9 +27,9 @@ class ProfilController extends AbstractController
 
     /**
      * editProfil
-     * 
+     *
      * @Route("/admin/edit/profil", name="edit.profil")
-     * 
+     *
      * @param  Request $request
      * @return Response
      */
@@ -46,7 +46,8 @@ class ProfilController extends AbstractController
         }
 
         return $this->render('back/profil/edit.html.twig', [
-            'form'  => $form->createView()
+            'form'      => $form->createView(),
+            'action'    => 'Modifier'
         ]);
     }
 }

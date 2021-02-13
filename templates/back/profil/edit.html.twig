@@ -1,17 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}{{ action }} votre profil {% endblock %}
 
 {% block body %}
-
     {% if is_granted("ROLE_SUPER_ADMIN") %}
+        {% include 'back/navigation.html.twig' %}
+            <section class="container my-5">
+                <header>
+                    <h1>{{ action }} votre profil</h1>
+                </header>
 
-        {{ form(form) }}
+                <div class="my-5">
+                    {{ form_start(form) }}
 
-    {% else %}
+                    <div class="mb-5">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                        <small>{{ form_help(form.email) }}</small>
+                    </div>
 
-        <p>Vous n'avez pas l'accès à cette partie de l'application !</p>
+                    <div class="mb-5">
+                        {{ form_label(form.newPassword) }}
+                        {{ form_widget(form.newPassword) }}
+                        <small>{{ form_help(form.newPassword) }}</small>
+                    </div>
 
+                    <div>
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                        <small>{{ form_help(form.description) }}</small>
+                    </div>
+
+
+                    {{ form_widget(form) }}
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-sm btn-outline-info">{{ action }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </section>
     {% endif %}
-
 {% endblock %}

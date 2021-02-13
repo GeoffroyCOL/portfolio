@@ -12,20 +12,48 @@
                 <h1>Tableau de board</h1>
             </header>
 
+            {% include 'back/message.html.twig' %}
+
             <div class="my-5">
-                <h2>Mon profil</h2>
+                <h2 class="mb-3">Mon profil</h2>
 
                 <p class="font-weight-bold text-uppercase text-info mb-0">Adresse email</p>
-                <p>{{ app.user.email }}</p>
+                <p class="mb-5">{{ app.user.email }}</p>
 
-                <p class="font-weight-bold text-uppercase text-info mb-0">Réseau sociaux</p>
+                {% if socials is defined %}
+                    <p class="font-weight-bold text-uppercase text-info mb-0">Réseau sociaux</p>
+                    <div class="table-responsive-sm mb-5">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">icon</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for social in socials %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ social.name }}</td>
+                                        <td>{{ social.icon | raw }}</td>
+                                        <td><a class="btn btn-sm btn-outline-info" href="{{ social.url }}">Voir</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p><a class="btn btn-sm btn-info" href="{{ path('add.social') }}"><i class="fas fa-plus"></i></a></p>
+                    </div>
+                {% endif %}
 
                 <p class="font-weight-bold text-uppercase text-info mb-0">Description</p>
                 <p>{{ app.user.description }}</p>
             </div>
 
             <footer>
-
+                <a class="btn btn-sm btn-outline-info" href="{{ path('edit.profil') }}">Modifier</a>
+                <a class="btn btn-sm btn-info" href="{{ path('app_logout') }}">Déconnexion</a>
             </footer>
         </section>
 

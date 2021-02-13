@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ action }} un réseau social {% endblock %}
+
+{% block body %}
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        {% include 'back/navigation.html.twig' %}
+            <section class="container my-5">
+                <header>
+                    <h1>{{ action }} un réseau social</h1>
+                </header>
+
+                <div class="my-5">
+                    {{ form_start(form) }}
+
+                    <div class="mb-3">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        <small>{{ form_help(form.name) }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.url) }}
+                        {{ form_widget(form.url) }}
+                        <small>{{ form_help(form.url) }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.icon) }}
+                        {{ form_widget(form.icon) }}
+                        <small>{{ form_help(form.icon) }}</small>
+                    </div>
+
+
+                    {{ form_widget(form) }}
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-sm btn-outline-info">{{ action }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </section>
+    {% endif %}
+{% endblock %}

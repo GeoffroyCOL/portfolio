@@ -18,25 +18,37 @@ class UserEditType extends AbstractType
     {
         $builder
             ->add('newPassword', RepeatedType::class, [
+                'label' => 'Mot de passe',
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passes ne correspondent pas.',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => [
+                    'attr' => ['class' => 'font-weight-bold mb-3'],
+                    'label_attr' => ['class'  => 'font-weight-bold']
+                ],
                 'required' => false,
-                'first_options'  => ['label' => 'Mot de passe'],
+                'first_options'  => ['label' => 'Choisir un mot de passe'],
                 'second_options' => ['label' => 'Répéter votre mot de passe'],
+                'label_attr' => [
+                    'class'  => 'font-weight-bold mb-2',
+                ]
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
-                'required' => true
+                'required' => true,
+                'label_attr' => [
+                    'class'  => 'font-weight-bold mb-2',
+                ]
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Votre description',
                 'required' => true,
                 'attr' => [
                     'rows'  => 8
+                ],
+                'label_attr' => [
+                    'class'  => 'font-weight-bold mb-2',
                 ]
             ])
-            ->add('Submit', SubmitType::class)
         ;
     }
 
