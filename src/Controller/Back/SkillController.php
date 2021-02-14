@@ -56,8 +56,8 @@ class SkillController extends AbstractController
         }
 
         return $this->render('back/skill/gestionSkill.html.twig', [
-            'form'      => $form->createView(),
-            'pageTitle' => 'Ajouter une compétence'
+            'form'   => $form->createView(),
+            'action' => 'Ajouter'
         ]);
     }
     
@@ -82,8 +82,8 @@ class SkillController extends AbstractController
         }
 
         return $this->render('back/skill/gestionSkill.html.twig', [
-            'form'      => $form->createView(),
-            'pageTitle' => 'Modifier une compétence'
+            'form'   => $form->createView(),
+            'action' => 'Modifier'
         ]);
     }
     

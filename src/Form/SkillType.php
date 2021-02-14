@@ -16,16 +16,34 @@ class SkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('color', ColorType::class)
-            ->add('icon', TextType::class)
+            ->add('name', TextType::class, [
+                'label' => 'Nom de la compétence',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
+            ])
+            ->add('color', ColorType::class, [
+                'label' => 'Couleur de la compétence',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
+            ])
+            ->add('icon', TextType::class, [
+                'label' => 'Icon de la compétence',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
+            ])
             ->add('level', ChoiceType::class, [
                 'required' => true,
                 'multiple' => false,
                 'expanded' => false,
-                'choices'  => $this->getChoices()
+                'choices'  => $this->getChoices(),
+                'label' => 'Niveau',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
-            ->add('Submit', SubmitType::class)
         ;
     }
 

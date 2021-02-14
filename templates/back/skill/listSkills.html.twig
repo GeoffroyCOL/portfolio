@@ -1,16 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SkillController!{% endblock %}
+{% block title %}Liste des compétences{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_delete_modal') }}
+{% endblock %}
 
 {% block body %}
 
-    <h2>Liste des compétences</h2>
-    <p><a href="{{ path('add.skill') }}">Ajouter une compétence</a></p>
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
 
-    {% if skills is defined %}
-        {% for skill in skills %}
-            <p><a href="{{ path('edit.skill', {id: skill.id}) }}">{{ skill.name }}</a> <a href="{{ path('delete.skill', {id: skill.id}) }}">Supprimer</a></p>
-        {% endfor %}
+        {% include 'back/navigation.html.twig' %}
+
+        <section class="container my-5">
+            <header>
+                <h1>Liste des compétences</h1>
+                <a class="btn btn-sm btn-outline-info" href="{{ path('add.skill') }}">Ajouter</a>
+            </header>
+
+            {% include 'back/message.html.twig' %}
+
+            <div class="my-5">
+                <div class="table-responsive mb-5">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">icon</th>
+                                <th scope="col">Couleur</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for skill in skills %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ path('edit.skill', {id: skill.id}) }}">{{ skill.name }}</a></td>
+                                    <td>{{ skill.icon | raw }}</td>
+                                    <td><span class="badge" style="font-size: 2rem;background-color: {{ skill.color }}"> </span></td>
+                                    <td>
+                                        <button type="button"
+                                                class="btn btn-sm btn-danger js-delete-button"
+                                                data-mdb-toggle="modal"
+                                                data-mdb-target="#deleteModal"
+                                                data-mdb-url="{{ path('delete.skill', {id: skill.id}) }}">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% include 'back/deleteModal.html.twig' %}
     {% endif %}
-
 {% endblock %}
+
