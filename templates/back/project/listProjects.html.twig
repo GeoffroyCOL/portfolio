@@ -1,16 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjectController!{% endblock %}
+{% block title %}Liste des projets{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_delete_modal') }}
+{% endblock %}
 
 {% block body %}
 
-    <h2>Liste des projets</h2>
-    <a href="{{ path('add.project') }}">Ajouter un projet</a>
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
 
-    {% if projects is defined %}
-        {% for project in projects %}
-            <p><a href="{{ path('edit.project', {id: project.id}) }}">{{ project.title }}</a> <a href="{{ path('delete.project', {id: project.id}) }}">Supprimer</a></p>
-        {% endfor %}
+        {% include 'back/navigation.html.twig' %}
+
+        <section class="container my-5">
+            <header>
+                <h1>Liste des projets</h1>
+                <a class="btn btn-sm btn-outline-info" href="{{ path('add.project') }}">Ajouter</a>
+            </header>
+
+            {% include 'back/message.html.twig' %}
+
+            <div class="my-5">
+                <div class="table-responsive mb-5">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in projects %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ path('edit.project', {id: project.id}) }}">{{ project.title }}</a></td>
+                                    <td>
+                                        <button type="button"
+                                                class="btn btn-sm btn-danger js-delete-button"
+                                                data-mdb-toggle="modal"
+                                                data-mdb-target="#deleteModal"
+                                                data-mdb-url="{{ path('delete.project', {id: project.id}) }}">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% include 'back/deleteModal.html.twig' %}
+
     {% endif %}
-
 {% endblock %}

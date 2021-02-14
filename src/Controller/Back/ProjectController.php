@@ -62,7 +62,7 @@ class ProjectController extends AbstractController
 
         return $this->render('back/project/gestionProject.html.twig', [
             'form'      => $form->createView(),
-            'pageTitle' => 'Ajouter un projet'
+            'action'    => 'Ajouter'
         ]);
     }
     
@@ -88,7 +88,8 @@ class ProjectController extends AbstractController
 
         return $this->render('back/project/gestionProject.html.twig', [
             'form'      => $form->createView(),
-            'pageTitle' => 'Modifier un projet'
+            'action'    => 'Modifier',
+            'project'   => $project
         ]);
     }
     

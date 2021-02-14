@@ -21,35 +21,59 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Le nom du projet'
-            ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Contenue du projet',
-                'attr' => [
-                    'rows'  => 10
+                'label' => 'Le nom du projet',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
                 ]
             ])
             ->add('createdAt', DateType::class, [
                 'label'     => 'Date de création',
                 'widget'    => 'single_text',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
             ->add('website', UrlType::class, [
                 'label'     => 'Lien du projet',
-                'required'  => false
+                'required'  => false,
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
             ->add('github', UrlType::class, [
                 'label'     => 'Lien du repositorie',
-                'required'  => false
+                'required'  => false,
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
+            ])
+            ->add('content', TextareaType::class, [
+                'label' => 'Contenue du projet',
+                'attr' => [
+                    'rows'  => 10
+                ],
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
             ->add('category', EntityType::class, [
+                'label'         => 'Categorie',
                 'class'         => Category::class,
                 'choice_label'  => 'name',
                 'multiple'      => true,
+                'attr'  => [
+                    'class' => 'js-select-multiple'
+                ],
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
             ->add('featured', ImageType::class, [
-                'label' => 'image mise en avant'
+                'label' => 'Image mise en avant',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
-            ->add('Submit', SubmitType::class)
         ;
     }
 

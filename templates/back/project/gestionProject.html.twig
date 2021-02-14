@@ -1,11 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}{{ action }} un projet {% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{ encore_entry_script_tags('app_select') }}
+{% endblock %}
 
 {% block body %}
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        {% include 'back/navigation.html.twig' %}
+            <section class="container my-5">
+                <header>
+                    <h1>{{ action }} un projet</h1>
+                </header>
 
-    <h2>{{ pageTitle }}</h2>
+                <div class="my-5 row">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="mb-4">
+                                {{ form_label(form.title) }}
+                                {{ form_widget(form.title) }}
+                                <small>{{ form_help(form.title) }}</small>
+                            </div>
 
-    {{ form(form) }}
+                            <div class="mb-4">
+                                {{ form_label(form.category) }}
+                                {{ form_widget(form.category) }}
+                                <small>{{ form_help(form.category) }}</small>
+                            </div>
 
+                            <div class="row my-md-3 my-lg-4">
+                                <div class="mb-4 col-lg-4">
+                                    {{ form_label(form.createdAt) }}
+                                    {{ form_widget(form.createdAt) }}
+                                    <small>{{ form_help(form.createdAt) }}</small>
+                                </div>
+
+                                <div class="mb-4 col-md-6 col-lg-4">
+                                    {{ form_label(form.website) }}
+                                    {{ form_widget(form.website) }}
+                                    <small>{{ form_help(form.website) }}</small>
+                                </div>
+
+                                <div class="mb-4 col-md-6 col-lg-4">
+                                    {{ form_label(form.github) }}
+                                    {{ form_widget(form.github) }}
+                                    <small>{{ form_help(form.github) }}</small>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                {{ form_label(form.content) }}
+                                {{ form_widget(form.content) }}
+                                <small>{{ form_help(form.content) }}</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 col-12 col-xl-3 offset-xl-1">
+                            {{ form_label(form.featured) }}
+
+                            {% if action == "Modifier" %}
+                                <img id="js-file-project" class="img-fluid" src="{{ vich_uploader_asset(project.featured, 'imageFile') }}" >
+                            {% endif %}
+
+                            {{ form_widget(form.featured) }}
+                            <small>{{ form_help(form.featured) }}</small>
+                        </div>
+
+                    </div>
+
+                    {{ form_widget(form) }}
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-sm btn-outline-info">{{ action }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </section>
+    {% endif %}
 {% endblock %}

@@ -15,8 +15,11 @@ class EditProjectType extends AbstractType
     {
         $builder
             ->add('featured', ImageType::class, [
-                'label'     => 'image mise en avant',
-                'required'  => false
+                'label'     => 'Image mise en avant',
+                'required'  => false,
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
         ;
     }

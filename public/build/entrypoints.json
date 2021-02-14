@@ -3,11 +3,25 @@
     "app": {
       "js": [
         "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-object_js.js",
         "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-28f194.js",
         "/build/app.js"
       ],
       "css": [
         "/build/app.css"
+      ]
+    },
+    "app_select": {
+      "js": [
+        "/build/runtime.js",
+        "/build/app_select.js"
+      ]
+    },
+    "app_delete_modal": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-object_js.js",
+        "/build/app_delete_modal.js"
       ]
     }
   }

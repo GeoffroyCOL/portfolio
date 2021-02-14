@@ -19,7 +19,10 @@ class ImageType extends AbstractType
             ])
             ->add('alt', TextType::class, [
                 'label' => "Description de l'image",
-                'required'  => false
+                'required'  => false,
+                'label_attr' => [
+                    'class' => 'font-weight-bold mt-3 mt-lg-0'
+                ]
             ])
         ;
     }
@@ -31,3 +34,5 @@ class ImageType extends AbstractType
         ]);
     }
 }
+
+// <img src="{{ vich_uploader_asset(project.featured, 'image') }}">
