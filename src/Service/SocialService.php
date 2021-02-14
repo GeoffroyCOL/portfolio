@@ -18,8 +18,6 @@ class SocialService
     }
     
     /**
-     * getAll
-     *
      * @return array|null
      */
     public function getAll(): ?array
@@ -28,8 +26,6 @@ class SocialService
     }
     
     /**
-     * persist
-     *
      * @param  Social $social
      * @return void
      */
@@ -40,8 +36,6 @@ class SocialService
     }
     
     /**
-     * delete
-     *
      * @param  Social $social
      * @return void
      */

@@ -18,8 +18,6 @@ class SkillService
     }
     
     /**
-     * getAll
-     *
      * @return array|null
      */
     public function getAll(): ?array
@@ -28,8 +26,6 @@ class SkillService
     }
     
     /**
-     * persist
-     *
      * @param  Skill $skill
      * @return void
      */
@@ -40,8 +36,6 @@ class SkillService
     }
     
     /**
-     * delete
-     *
      * @param  Skill $skill
      * @return void
      */

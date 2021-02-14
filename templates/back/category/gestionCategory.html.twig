@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}{{ action }} une catégorie{% endblock %}
 
 {% block body %}
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        {% include 'back/navigation.html.twig' %}
+            <section class="container my-5">
+                <header>
+                    <h1>{{ action }} une catégorie</h1>
+                </header>
 
-    <h2>{{ pageTitle }}</h2>
+                <div class="my-5">
+                    {{ form_start(form) }}
 
-    {{ form(form) }}
-
+                    <div class="mb-3">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        <small>{{ form_help(form.name) }}</small>
+                    </div>
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-sm btn-outline-info">{{ action }}</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </section>
+    {% endif %}
 {% endblock %}

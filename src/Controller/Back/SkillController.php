@@ -13,8 +13,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * SkillController
- * 
  * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
  */
 class SkillController extends AbstractController
@@ -28,6 +26,7 @@ class SkillController extends AbstractController
 
     /**
      * @Route("/admin/skills", name="list.skill")
+     * @return Response
      */
     public function listSkills(): Response
     {
@@ -37,17 +36,13 @@ class SkillController extends AbstractController
     }
     
     /**
-     * addSkill
-     * 
      * @Route("/admin/add/skill", name="add.skill")
-     *
      * @param  Request $request
      * @return Response
      */
     public function addSkill(Request $request): Response
     {
         $form = $this->createForm(SkillType::class);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->skillService->persist($form->getData());
@@ -62,10 +57,7 @@ class SkillController extends AbstractController
     }
     
     /**
-     * editSkill
-     *
      * @Route("/admin/edit/skill/{id}", name="edit.skill")
-     * 
      * @param  Request $request
      * @param  Skill $skill
      * @return Response
@@ -73,7 +65,6 @@ class SkillController extends AbstractController
     public function editSkill(Request $request, Skill $skill): Response
     {
         $form = $this->createForm(SkillType::class, $skill);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->skillService->persist($form->getData());
@@ -88,10 +79,7 @@ class SkillController extends AbstractController
     }
     
     /**
-     * deleteSkill
-     *
      * @Route("/admin/delete/skill/{id}", name="delete.skill")
-     * 
      * @param  Skill $skill
      * @return Response
      */

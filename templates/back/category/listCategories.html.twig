@@ -1,15 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Liste des catégories{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_delete_modal') }}
+{% endblock %}
 
 {% block body %}
 
-    <h2>Liste des catégories</h2>
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
 
-    <a href="{{ path('add.category') }}">Ajouter une catégorie</a>
+        {% include 'back/navigation.html.twig' %}
 
-    {% for category in categories %}
-        <p><a href="{{ path('edit.category', {id: category.id}) }}">{{ category.name }}</a> <a href="{{ path('delete.category', {id: category.id}) }}">Supprimer</a></p>
-    {% endfor %}
+        <section class="container my-5">
+            <header>
+                <h1>Liste des catégories</h1>
+                <a class="btn btn-sm btn-outline-info" href="{{ path('add.category') }}">Ajouter</a>
+            </header>
 
+            {% include 'back/message.html.twig' %}
+
+            <div class="my-5">
+                <div class="table-responsive mb-5">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for category in categories %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ path('edit.category', {id: category.id}) }}">{{ category.name }}</a></td>
+                                    <td>
+                                        <button type="button"
+                                                class="btn btn-sm btn-danger js-delete-button"
+                                                data-mdb-toggle="modal"
+                                                data-mdb-target="#deleteModal"
+                                                data-mdb-url="{{ path('delete.category', {id: category.id}) }}">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% include 'back/deleteModal.html.twig' %}
+    {% endif %}
 {% endblock %}
+

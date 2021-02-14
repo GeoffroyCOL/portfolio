@@ -23,7 +23,7 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * 
+     *
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "La description de l'image doit être supérieur à {{ limit }} charactères."
@@ -40,7 +40,7 @@ class Image
     /**
      * @Vich\UploadableField(mapping="project_images", fileNameProperty="image")
      * @var File
-     * 
+     *
      * @Assert\Image(
      *      minRatio = 1,
      *      minRatioMessage = "Cette image doit avoir un ratio minimum de {{ min_ratio }} pour {{ ratio }} actuellement"
@@ -56,8 +56,6 @@ class Image
 
     
     /**
-     * getId
-     *
      * @return int|null
      */
     public function getId(): ?int
@@ -66,8 +64,6 @@ class Image
     }
     
     /**
-     * getAlt
-     *
      * @return string|null
      */
     public function getAlt(): ?string
@@ -76,56 +72,37 @@ class Image
     }
     
     /**
-     * setAlt
-     *
      * @param  string|null $alt
      * @return self
      */
     public function setAlt(?string $alt): self
     {
         $this->alt = $alt;
-
         return $this;
     }
     
     /**
-     * setImageFile
-     *
      * @param  File|null $image
      * @return void
      */
     public function setImageFile(File $image = null): void
     {
         $this->imageFile = $image;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
         if ($image) {
-            // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new \DateTime('now');
         }
     }
     
-    /**
-     * getImageFile
-     */
     public function getImageFile()
     {
         return $this->imageFile;
     }
     
-    /**
-     * setImage
-     */
     public function setImage($image)
     {
         $this->image = $image;
     }
     
-    /**
-     * getImage
-     */
     public function getImage()
     {
         return $this->image;

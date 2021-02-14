@@ -9,7 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
+ */
 class SocialController extends AbstractController
 {
     private $socialService;
@@ -20,17 +25,13 @@ class SocialController extends AbstractController
     }
 
     /**
-     * addSocial
-     *
      * @Route("/admin/add/social", name="add.social")
-     *
      * @param  Request $request
      * @return Response
      */
     public function addSocial(Request $request): Response
     {
         $form = $this->createForm(SocialType::class);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->socialService->persist($form->getData());
@@ -45,10 +46,7 @@ class SocialController extends AbstractController
     }
 
     /**
-     * editSocial
-     *
      * @Route("/admin/edit/social/{id}", name="edit.social")
-     *
      * @param  Social $social
      * @param  Request $request
      * @return Response
@@ -56,7 +54,6 @@ class SocialController extends AbstractController
     public function editSocial(Request $request, Social $social): Response
     {
         $form = $this->createForm(SocialType::class, $social);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->socialService->persist($form->getData());
@@ -71,10 +68,7 @@ class SocialController extends AbstractController
     }
 
     /**
-     * deleteSocial
-     *
      * @Route("/admin/delete/social/{id}", name="delete.social")
-     *
      * @param  Social $social
      * @return Response
      */

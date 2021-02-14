@@ -73,8 +73,6 @@ class Skill
     private $level;
     
     /**
-     * getId
-     *
      * @return int|null
      */
     public function getId(): ?int
@@ -83,8 +81,6 @@ class Skill
     }
     
     /**
-     * getName
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -93,21 +89,16 @@ class Skill
     }
     
     /**
-     * setName
-     *
      * @param  string $name
      * @return self
      */
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
     
     /**
-     * getColor
-     *
      * @return string|null
      */
     public function getColor(): ?string
@@ -116,21 +107,16 @@ class Skill
     }
     
     /**
-     * setColor
-     *
      * @param  string $color
      * @return self
      */
     public function setColor(string $color): self
     {
         $this->color = $color;
-
         return $this;
     }
     
     /**
-     * getIcon
-     *
      * @return string|null
      */
     public function getIcon(): ?string
@@ -139,21 +125,16 @@ class Skill
     }
     
     /**
-     * setIcon
-     *
      * @param  string $icon
      * @return self
      */
     public function setIcon(string $icon): self
     {
         $this->icon = $icon;
-
         return $this;
     }
     
     /**
-     * getLevel
-     *
      * @return string|null
      */
     public function getLevel(): ?string
@@ -162,15 +143,12 @@ class Skill
     }
     
     /**
-     * setLevel
-     *
      * @param  string $level
      * @return self
      */
     public function setLevel(string $level): self
     {
         $this->level = $level;
-
         return $this;
     }
 }

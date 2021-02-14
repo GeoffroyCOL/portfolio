@@ -32,8 +32,6 @@ class EditProjectType extends AbstractType
     }
     
     /**
-     * getParent
-     *
      * @return string
      */
     public function getParent(): string

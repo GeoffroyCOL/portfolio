@@ -12,8 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * ProfilController
- *
  * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
  */
 class ProfilController extends AbstractController
@@ -26,10 +24,7 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * editProfil
-     *
      * @Route("/admin/edit/profil", name="edit.profil")
-     *
      * @param  Request $request
      * @return Response
      */
@@ -37,7 +32,6 @@ class ProfilController extends AbstractController
     {
         $user = $this->getUser();
         $form = $this->createForm(UserEditType::class, $user);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->edit($form->getData());

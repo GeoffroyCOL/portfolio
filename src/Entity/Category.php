@@ -43,8 +43,6 @@ class Category
     private $slug;
     
     /**
-     * getId
-     *
      * @return int|null
      */
     public function getId(): ?int
@@ -53,8 +51,6 @@ class Category
     }
     
     /**
-     * getName
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -63,21 +59,16 @@ class Category
     }
     
     /**
-     * setName
-     *
      * @param  string $name
      * @return self
      */
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
     
     /**
-     * getSlug
-     *
      * @return string|null
      */
     public function getSlug(): ?string
@@ -86,15 +77,12 @@ class Category
     }
     
     /**
-     * setSlug
-     *
      * @param  string $slug
      * @return self
      */
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
 }

@@ -34,5 +34,3 @@ class ImageType extends AbstractType
         ]);
     }
 }
-
-// <img src="{{ vich_uploader_asset(project.featured, 'image') }}">

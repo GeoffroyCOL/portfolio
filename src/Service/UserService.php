@@ -21,8 +21,6 @@ class UserService
     }
     
     /**
-     * edit
-     *
      * @param  User $user
      * @return void
      */
@@ -34,7 +32,6 @@ class UserService
                 $user->getNewpassword()
             ));
         }
-
         $this->manager->flush();
     }
 }

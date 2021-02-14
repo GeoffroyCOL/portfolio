@@ -9,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SkillType extends AbstractType
 {
@@ -55,8 +54,6 @@ class SkillType extends AbstractType
     }
     
     /**
-     * getChoices
-     *
      * @return array
      */
     private function getChoices(): array

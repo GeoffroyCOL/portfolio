@@ -7,7 +7,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CategoryType extends AbstractType
 {
@@ -15,9 +14,11 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de la catégorie'
+                'label' => 'Nom de la catégorie',
+                'label_attr' => [
+                    'class' => 'font-weight-bold'
+                ]
             ])
-            ->add('Submit', SubmitType::class)
         ;
     }
 

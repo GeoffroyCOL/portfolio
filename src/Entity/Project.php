@@ -27,7 +27,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * 
+     *
      * @Assert\NotBlank(
      *      message="Le titre du projet ne peut pas être vide !"
      * )
@@ -46,7 +46,7 @@ class Project
 
     /**
      * @ORM\Column(type="text")
-     * 
+     *
      * @Assert\NotBlank(
      *      message="Le contenue du projet ne peut pas être vide !"
      * )
@@ -65,7 +65,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * 
+     *
      * @Assert\Url(
      *    message = "L'url du projet n'est pas valide.",
      * )
@@ -80,7 +80,7 @@ class Project
     /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * 
+     *
      * @Assert\Valid
      */
     private $featured;
@@ -93,7 +93,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * 
+     *
      * @Assert\Url(
      *    message = "L'url du repository n'est pas valide.",
      * )
@@ -106,8 +106,6 @@ class Project
     }
     
     /**
-     * getId
-     *
      * @return int|null
      */
     public function getId(): ?int
@@ -116,8 +114,6 @@ class Project
     }
     
     /**
-     * getTitle
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -126,21 +122,16 @@ class Project
     }
     
     /**
-     * setTitle
-     *
      * @param  string $title
      * @return self
      */
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
     
     /**
-     * getSlug
-     *
      * @return string|null
      */
     public function getSlug(): ?string
@@ -149,21 +140,16 @@ class Project
     }
     
     /**
-     * setSlug
-     *
      * @param  string $slug
      * @return self
      */
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
     
     /**
-     * getContent
-     *
      * @return string|null
      */
     public function getContent(): ?string
@@ -172,21 +158,16 @@ class Project
     }
     
     /**
-     * setContent
-     *
      * @param  string $content
      * @return self
      */
     public function setContent(string $content): self
     {
         $this->content = $content;
-
         return $this;
     }
     
     /**
-     * getCreatedAt
-     *
      * @return DateTimeInterface|null
      */
     public function getCreatedAt(): ?\DateTimeInterface
@@ -195,21 +176,16 @@ class Project
     }
     
     /**
-     * setCreatedAt
-     *
      * @param  DateTimeInterface $createdAt
      * @return self
      */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
     
     /**
-     * getWebsite
-     *
      * @return string|null
      */
     public function getWebsite(): ?string
@@ -218,15 +194,12 @@ class Project
     }
     
     /**
-     * setWebsite
-     *
      * @param  string|null $website
      * @return self
      */
     public function setWebsite(?string $website): self
     {
         $this->website = $website;
-
         return $this;
     }
 
@@ -239,8 +212,6 @@ class Project
     }
     
     /**
-     * addCategory
-     *
      * @param  Category $category
      * @return self
      */
@@ -249,26 +220,20 @@ class Project
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
         }
-
         return $this;
     }
     
     /**
-     * removeCategory
-     *
      * @param  Category $category
      * @return self
      */
     public function removeCategory(Category $category): self
     {
         $this->category->removeElement($category);
-
         return $this;
     }
     
     /**
-     * getFeatured
-     *
      * @return Image|null
      */
     public function getFeatured(): ?Image
@@ -277,21 +242,16 @@ class Project
     }
     
     /**
-     * setFeatured
-     *
      * @param  Image $featured
      * @return self
      */
     public function setFeatured(Image $featured): self
     {
         $this->featured = $featured;
-
         return $this;
     }
     
     /**
-     * getAutor
-     *
      * @return User|null
      */
     public function getAutor(): ?User
@@ -300,21 +260,16 @@ class Project
     }
     
     /**
-     * setAutor
-     *
      * @param  User|null $autor
      * @return self
      */
     public function setAutor(?User $autor): self
     {
         $this->autor = $autor;
-
         return $this;
     }
     
     /**
-     * getGithub
-     *
      * @return string|null
      */
     public function getGithub(): ?string
@@ -323,15 +278,12 @@ class Project
     }
     
     /**
-     * setGithub
-     *
      * @param  string|null $github
      * @return self
      */
     public function setGithub(?string $github): self
     {
         $this->github = $github;
-
         return $this;
     }
 }

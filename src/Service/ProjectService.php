@@ -24,8 +24,6 @@ class ProjectService
     }
     
     /**
-     * getAll
-     *
      * @return array|null
      */
     public function getAll(): ?array
@@ -34,8 +32,6 @@ class ProjectService
     }
     
     /**
-     * add
-     *
      * @param  Project $project
      * @return void
      */
@@ -43,14 +39,11 @@ class ProjectService
     {
         $project->setAutor($this->security->getUser());
         $project->setSlug(strtolower($this->slugger->slug($project->getTitle())));
-
         $this->manager->persist($project);
         $this->manager->flush();
     }
     
     /**
-     * edit
-     *
      * @param  Project $project
      * @return void
      */
@@ -61,8 +54,6 @@ class ProjectService
     }
     
     /**
-     * delete
-     *
      * @param  Project $project
      * @return void
      */

@@ -14,8 +14,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * ProjectController
- * 
  * @Security("is_granted('ROLE_SUPER_ADMIN')", statusCode=403, message="vous ne pouvez pas accéder à cette partie !")
  */
 class ProjectController extends AbstractController
@@ -28,10 +26,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * listProjects
-     * 
      * @Route("/admin/projects", name="list.project")
-     * 
      * @return Response
      */
     public function listProjects(): Response
@@ -42,17 +37,13 @@ class ProjectController extends AbstractController
     }
     
     /**
-     * addProject
-     * 
      * @Route("/admin/add/project", name="add.project")
-     *
      * @param  Request $request
      * @return Response
      */
     public function addProject(Request $request): Response
     {
         $form = $this->createForm(ProjectType::class);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->projectService->add($form->getData());
@@ -67,10 +58,7 @@ class ProjectController extends AbstractController
     }
     
     /**
-     * editProject
-     * 
      * @Route("/admin/edit/project/{id}", name="edit.project")
-     *
      * @param  Request $request
      * @param  Project $project
      * @return Response
@@ -78,7 +66,6 @@ class ProjectController extends AbstractController
     public function editProject(Request $request, Project $project): Response
     {
         $form = $this->createForm(EditProjectType::class, $project);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->projectService->edit($form->getData());
@@ -94,10 +81,7 @@ class ProjectController extends AbstractController
     }
     
     /**
-     * deleteProject
-     * 
      * @Route("/admin/delete/project/{id}", name="delete.project")
-     *
      * @param  Project $project
      * @return Response
      */

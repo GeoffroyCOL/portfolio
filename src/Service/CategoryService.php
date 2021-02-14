@@ -21,8 +21,6 @@ class CategoryService
     }
     
     /**
-     * getAll
-     *
      * @return array|null
      */
     public function getAll(): ?array
@@ -31,22 +29,17 @@ class CategoryService
     }
     
     /**
-     * persist - Permet d'ajouter et de modifer une catégorie
-     *
      * @param  Category $category
      * @return void
      */
     public function persist(Category $category): void
     {
         $category->setSlug(strtolower($this->slugger->slug($category->getName())));
-        
         $this->manager->persist($category);
         $this->manager->flush();
     }
     
     /**
-     * delete
-     *
      * @param  Category $category
      * @return void
      */
