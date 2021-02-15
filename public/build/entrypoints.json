@@ -23,6 +23,11 @@
         "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-object_js.js",
         "/build/app_delete_modal.js"
       ]
+    },
+    "app_navigation": {
+      "js": [
+        "/build/runtime.js"
+      ]
     }
   }
 }
