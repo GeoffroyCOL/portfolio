@@ -187,7 +187,7 @@ main.open #navigation .opacity {
   .bar.bar-1 {
     width: 50%;
     left: 25%;
-    bottom: 0px;
+    bottom: 0;
     opacity: 0.75;
   }
 
