@@ -104,14 +104,14 @@ main.open #navigation {
   width: 100%;
   opacity: 1;
   left: 0;
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 #nav-icon span:nth-child(1) {
-  top: 0
+  top: 0;
 }
 
 #nav-icon span:nth-child(2) {
@@ -119,10 +119,10 @@ main.open #navigation {
 }
 
 #nav-icon span:nth-child(3) {
-  bottom: 0
+  bottom: 0;
 }
 
-#nav-icon{
+#nav-icon {
   width: 30px;
   height: 20px;
   -webkit-transition: 0.5s ease-in-out;
@@ -176,68 +176,64 @@ main.open #navigation .opacity {
   }
 
   .section:first-child {
-        margin-top: 0;
-    }
+    margin-top: 0;
+  }
 
-    .section:last-child {
-        margin-bottom: 0;
-    }
+  .section:last-child {
+    margin-bottom: 0;
+  }
 
-    /* Les lignes sous le titres */
-    .bar.bar-1 {
-        width: 50%;
-        left: 25%;
-        bottom: 0px;
-        opacity: 0.75;
-    }
+  /* Les lignes sous le titres */
+  .bar.bar-1 {
+    width: 50%;
+    left: 25%;
+    bottom: 0px;
+    opacity: 0.75;
+  }
 
-    .bar.bar-2 {
-        width: 25%;
-        left: 37.5%;
-        bottom: -10px;
-        opacity: 0.5;
-    }
+  .bar.bar-2 {
+    width: 25%;
+    left: 37.5%;
+    bottom: -10px;
+    opacity: 0.5;
+  }
 
-    .bar.bar-3 {
-        width: 12.5%;
-        left: 44%;
-        bottom: -20px;
-        opacity: 0.25;
-    }
+  .bar.bar-3 {
+    width: 12.5%;
+    left: 44%;
+    bottom: -20px;
+    opacity: 0.25;
+  }
 
-    .title {
-        padding-top: 7rem;
-    }
+  .title {
+    padding-top: 7rem;
+  }
+}
 
-  @media all and (min-width: 768px) {
-    /* Les lignes sous le titres */
-    .bar.bar-1 {
-        width: 100%;
-        left: 0;
-    }
+@media all and (min-width: 768px) {
+  /* Les lignes sous le titres */
+  .bar.bar-1 {
+    width: 100%;
+    left: 0;
+  }
 
-    .bar.bar-2 {
-        width: 50%;
-        left: 0%;
-    }
+  .bar.bar-2 {
+    width: 50%;
+    left: 0%;
+  }
 
-    .bar.bar-3 {
-        width: 25%;
-        left: 0;
-    }
+  .bar.bar-3 {
+    width: 25%;
+    left: 0;
+  }
 
-    .section {
-        margin: 10rem 0;
-    }
+  .section {
+    margin: 10rem 0;
+  }
 
-    ul.pagination {
-        justify-content: left;
-    }
-
-    /* Contact */
-    #message-response {
-        bottom: -1.75rem;
-        width: 75%;
-    }
+  /* Contact */
+  #message-response {
+    bottom: -1.75rem;
+    width: 75%;
   }
 }
