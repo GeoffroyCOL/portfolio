@@ -40,8 +40,8 @@ class ProfilController extends AbstractController
         }
 
         return $this->render('back/profil/edit.html.twig', [
-            'form'      => $form->createView(),
-            'action'    => 'Modifier'
+            'form'          => $form->createView(),
+            'action'        => 'Modifier'
         ]);
     }
 }

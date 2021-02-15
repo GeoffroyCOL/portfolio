@@ -28,7 +28,8 @@ class DashboardController extends AbstractController
     public function index(): Response
     {
         return $this->render('back/dashboard/index.html.twig', [
-            'socials'   => $this->socialService->getAll()
+            'socials'       => $this->socialService->getAll(),
+            'active_page'   => 'profil'
         ]);
     }
 }

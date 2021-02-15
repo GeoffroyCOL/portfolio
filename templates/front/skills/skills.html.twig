@@ -1,0 +1,25 @@
+<section id="skills" class="section">
+    <header class="section-title pt-3 text-center pt-md-5 text-md-left d-md-inline-block">
+        <h2 class="title typo-title text-primary-color">Compétences</h2>
+        <div class="title-bars position-relative w-75 w-md-100 m-auto m-md-0">
+            <span class="bar position-absolute bar-1"></span>
+            <span class="bar position-absolute bar-2"></span>
+            <span class="bar position-absolute bar-3"></span>
+        </div>
+    </header>
+
+    {% if skills is defined %}
+        <div class="row mt-over justify-content-md-center">
+            {% for skill in skills %}
+                <div class="col-12 col-md-6 col-xl-4 mb-4">
+                    <div class="card" style="border: 1px solid {{ skill.color }}">
+                        <div class="card-body skill">
+                            <h3 class="h4 typo-title"><span class="h2" style="color:{{ skill.color }}; vertical-align: middle">{{ skill.icon | raw }}</span> {{ skill.name }}</h3>
+                            <p class="mb-0 text-right small font-italic font-weight-bold" style="color:{{ skill.color }}">{{ skill.level }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+</section>

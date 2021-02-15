@@ -1,0 +1,11 @@
+<footer id="site-footer">
+    <div class="container text-center p-5 border-top">
+        <p class="h4 typo-title mb-0">Geoffroy COLPART</p>
+        <p class="mb-3">{{ "now" | date("Y") }} <i class="far fa-copyright"></i> Tous droits réservés</p>
+        <p class="mb-0">
+            {% for social in socials %}
+                <a class="mr-3 link transition" target="_blank" href="{{ social.url }}">{{ social.icon | raw }} {{ social.name }}</a>
+            {% endfor %}
+        </p>
+    </div>
+</footer>

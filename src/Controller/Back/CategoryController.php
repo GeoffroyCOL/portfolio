@@ -31,7 +31,8 @@ class CategoryController extends AbstractController
     public function listCategory(): Response
     {
         return $this->render('back/category/listCategories.html.twig', [
-            'categories' => $this->categoryService->getAll()
+            'categories'    => $this->categoryService->getAll(),
+            'active_page'   => 'category'
         ]);
     }
     

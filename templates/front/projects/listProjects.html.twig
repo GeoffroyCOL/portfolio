@@ -1,0 +1,20 @@
+{% for project in projects %}
+    <div class="col-12 col-md-6 col-xl-4 mb-5 animate__animated animate__fadeIn">
+        <article class="card hover-shadow border text-center text-md-left overflow-hidden">
+            <header class="embed-responsive embed-responsive-16by9">
+                <img class="embed-responsive-item" src="{{ vich_uploader_asset(project.featured, 'imageFile') }}"  alt="{{ project.featured.alt }}" />
+            </header>
+            <div class="card-body">
+                <h3 class="mb-2 typo-title text-primary-color-dark">{{ project.title }}</h3>
+                <p class="mb-4">
+                {% for category in project.category %}
+                    <a href="#" class="badge text-white bg-primary-color">{{ category.name }}</a>
+                {% endfor %}
+                </p>
+            </div>
+            <footer class="card-footer border-top-0 mb-2 d-flex justify-content-center justify-content-md-end">
+                <a rel="noopener" target="_blank" href="#" class="btn btn-outline-card">Voir</a>
+            </footer>
+        </article>
+    </div>
+{% endfor %}

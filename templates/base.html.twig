@@ -20,14 +20,18 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
+    </head>
+    <body>
+        <main id="main" class="position-relative">
+            {% block body %}
+            {% endblock %}
+        </main>
+
         {% block javascripts %}
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js"></script>
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-    </head>
-    <body class="bg-light">
-        {% block body %}
-        {% endblock %}
+
     </body>
 </html>

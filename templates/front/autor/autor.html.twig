@@ -1,0 +1,30 @@
+<section id="about" class="section">
+    <header class="section-title pt-3 text-center pt-md-5 text-md-left d-md-inline-block">
+        <h2 class="title typo-title text-primary-color">A propos</h2>
+        <div class="title-bars position-relative w-75 w-md-100 m-auto m-md-0">
+            <span class="bar position-absolute bar-1"></span>
+            <span class="bar position-absolute bar-2"></span>
+            <span class="bar position-absolute bar-3"></span>
+        </div>
+    </header>
+
+    <div class="mt-over text-center text-md-left">
+        <div>
+            <div class="my-4 mt-md-4 mt-lg-3 mb-md-5 mb-lg-0">
+                <p>
+                    Bonjour, je m'appelle Geoffroy, développeur web basé à Réalmont dans la région Occitanie.
+                    Diplômée de la formation de développeur d'applications PHP / Symfony réalisé chez 
+                    <a href="https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony" target="_blank" class="font-weight-bold link transition">Openclassrooms</a>, je me lance dans le monde du développement web suite à reconversion professionnelle.<br>
+                    Vous pouvez retrouver mes différents <a class="font-weight-bold link transition" href="#projects">projets</a> réalisés pendant ma formation.
+                </p>
+                <p>J'aime concevoir, réaliser, répondre à un besoin pour la conception de sites ou bien d'applications pour le web.</p>
+            </div>
+            <div class="text-md-right mt-5">
+                {% for social in socials %}
+                    <a class="mr-3 link transition" target="_blank" href="{{ social.url }}">{{ social.icon | raw }} {{ social.name }}</a>
+                {% endfor %}
+                <a class="link transition" download="Geoffroy_Colpart_CV" target="_blank" href="/images/cv.pdf"><i class="fas fa-file-pdf fa-lg"></i> CV</a>
+            </div>
+        </div>
+    </div>
+</section>

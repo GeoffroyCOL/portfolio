@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio | Geoffroy COLPART{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_navigation') }}
+{% endblock %}
+
+{% block body %}
+
+    <!-- Navigation -->
+    {% include 'front/navigation.html.twig' %}
+
+    <div class="container my-5">
+        <!-- Auteur --> 
+        {% include 'front/autor/autor.html.twig' %}
+
+        <!-- Compétences -->
+        {% include 'front/skills/skills.html.twig' %}
+
+        <!-- Projet -->
+        {% include 'front/projects/projects.html.twig' %}
+
+        <!-- contact -->
+        {% include 'front/contact/contact.html.twig' %}
+    </div>
+
+    <!-- footer -->
+    {% include 'front/footer.html.twig' %}
+
+{% endblock %}

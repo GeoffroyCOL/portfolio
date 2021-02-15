@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet | {{ project.name }}{% endblock %}
+
+{% block body %}
+
+{% include 'front/navigation.html.twig' %}
+
+    <div class="container mb-5">
+        <section class="section">
+            <header class="ratio ratio-16x9">
+                <img src="/images/projects/{{ project.imageName }}" alt="" />
+            </header>
+
+            <article class="my-3 my-md-4 my-xl-5">
+                <header>
+                    <h2 class="typo-title h1">{{ project.name }}</h2>
+                    <div class="meta-data">
+                        <p class="mb-0">Crée le : <time class="text-primary-color-light" datetime="2020-11-26">26 novembre 2020</time></p>
+                        <p>
+                            {% for category in project.category %}
+                                <span class="badge text-white bg-primary-color-light">{{ category.name }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </header>
+
+                <div class="text-break text-justify my-5">{{ project.content | raw }}</div>
+
+                <footer class="text-center text-md-right">
+                    {% if project.repository %}
+                        <a target="_blank" class="mr-2" href="#"><i class="fab fa-github fa-lg"></i> Repository</a>
+                    {% endif %}
+
+                    {% if project.web %}
+                        <a target="_blank" href="{{ project.web }}"><i class="fas fa-globe"></i> Projet</a>
+                    {% endif %}
+                </footer>
+            </article>
+        </section>
+    </div>
+
+{% include 'front/footer.html.twig' %}
+
+{% endblock %}
