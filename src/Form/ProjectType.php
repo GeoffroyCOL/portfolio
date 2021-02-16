@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Form\ImageType;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -46,11 +47,8 @@ class ProjectType extends AbstractType
                     'class' => 'font-weight-bold'
                 ]
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 'label' => 'Contenue du projet',
-                'attr' => [
-                    'rows'  => 10
-                ],
                 'label_attr' => [
                     'class' => 'font-weight-bold'
                 ]
