@@ -13,7 +13,6 @@ class ProjectController extends AbstractController
 {
     private $projectService;
     private $socialService;
-    private $categoryService;
 
     public function __construct(ProjectService $projectService, SocialService $socialService)
     {
@@ -28,7 +27,7 @@ class ProjectController extends AbstractController
      */
     public function show(Project $project): Response
     {
-        $listProjectsByCategory = [];
+        $projectsByCategory = [];
 
         //Récupération des catégories du project
         $categories = $project->getCategory()->toArray();
@@ -36,8 +35,8 @@ class ProjectController extends AbstractController
         //Récupération des différents projets selon les catégories
         foreach($categories as $category) {
             foreach($category->getProjects() as $projectCategory) {
-                if ($project !== $projectCategory && !in_array($projectCategory, $listProjectsByCategory)) {
-                    $listProjectsByCategory[] = $projectCategory;
+                if ($project !== $projectCategory && !in_array($projectCategory, $projectsByCategory)) {
+                    $projectsByCategory[] = $projectCategory;
                 }
             }
         }
@@ -46,7 +45,7 @@ class ProjectController extends AbstractController
             'project'               => $project,
             'socials'               => $this->socialService->getAll(),
             'singleProject'         => true,
-            'projectsByCategory'    => $listProjectsByCategory
+            'projectsByCategory'    => $projectsByCategory
         ]);
     }
 }
