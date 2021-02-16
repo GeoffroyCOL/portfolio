@@ -73,11 +73,6 @@ class Project
     private $website;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class)
-     */
-    private $category;
-
-    /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      *
@@ -99,6 +94,11 @@ class Project
      * )
      */
     private $github;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="projects")
+     */
+    private $category;
 
     public function __construct()
     {
@@ -202,36 +202,6 @@ class Project
         $this->website = $website;
         return $this;
     }
-
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-    
-    /**
-     * @param  Category $category
-     * @return self
-     */
-    public function addCategory(Category $category): self
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-        return $this;
-    }
-    
-    /**
-     * @param  Category $category
-     * @return self
-     */
-    public function removeCategory(Category $category): self
-    {
-        $this->category->removeElement($category);
-        return $this;
-    }
     
     /**
      * @return Image|null
@@ -284,6 +254,36 @@ class Project
     public function setGithub(?string $github): self
     {
         $this->github = $github;
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+    
+    /**
+     * @param  Category $category
+     * @return self
+     */
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+        return $this;
+    }
+    
+    /**
+     * @param  Category $category
+     * @return self
+     */
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
         return $this;
     }
 }

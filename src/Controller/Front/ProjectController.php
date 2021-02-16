@@ -28,14 +28,25 @@ class ProjectController extends AbstractController
      */
     public function show(Project $project): Response
     {
+        $listProjectsByCategory = [];
+
+        //Récupération des catégories du project
         $categories = $project->getCategory()->toArray();
 
-        
+        //Récupération des différents projets selon les catégories
+        foreach($categories as $category) {
+            foreach($category->getProjects() as $projectCategory) {
+                if ($project !== $projectCategory && !in_array($projectCategory, $listProjectsByCategory)) {
+                    $listProjectsByCategory[] = $projectCategory;
+                }
+            }
+        }
 
         return $this->render('front/projects/single.html.twig', [
             'project'               => $project,
             'socials'               => $this->socialService->getAll(),
-            'singleProject'         => true
+            'singleProject'         => true,
+            'projectsByCategory'    => $listProjectsByCategory
         ]);
     }
 }

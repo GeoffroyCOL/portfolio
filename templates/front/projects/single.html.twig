@@ -7,9 +7,9 @@
 {% include 'front/navigation.html.twig' %}
 
     <div class="container my-5">
-        <div class="row">
-            <section class="section col-xl-7">
-                <header class="ratio ratio-16x9">
+        <div class="row section">
+            <section class="col-xl-7">
+                <header class="ratio ratio-16x9 shadow-2">
                     <img class="img-fluid" src={{ vich_uploader_asset(project.featured, 'imageFile') }} alt="{{ project.featured.alt }}" />
                 </header>
 
@@ -17,7 +17,7 @@
                     <header>
                         <h2 class="typo-title h1">{{ project.title }}</h2>
                         <div class="meta-data">
-                            <p class="mb-0">Crée le : <time class="text-primary-color-light">{{ project.createdAt | date('d/m/Y') }}</time></p>
+                            <p class="mb-0">Crée le : <time class="text-primary-color-light">{{ project.createdAt | date('l d F Y') | format_datetime('full', 'none', locale='fr') }}</time></p>
                             <p>
                                 {% for category in project.category %}
                                     <span class="badge text-white bg-primary-color">{{ category.name }}</span>
@@ -40,14 +40,18 @@
                 </article>
             </section>
 
-            <aside class="col-xl-4 offset-xl-1 position-relative">
-                <div class="position-sticky top-10">
+            <aside class="mt-5 col-xl-4 offset-xl-1 position-relative">
+                <div class="position-sticky top-10 card p-3">
                     <header>
-                        <h3>Dans la même catégorie</h3>
+                        <h3 class="h4 text-primary-color-light">Dans la même catégorie</h3>
                     </header>
 
                     <div>
-                    
+                        <ul class="list-group">
+                        {% for projectCategory in projectsByCategory %}
+                            <li class="list-group-item border-0"><a class="link transition" href="{{ path('single.project', {slug: projectCategory.slug}) }}">{{ projectCategory.title }}</a></li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </aside>
