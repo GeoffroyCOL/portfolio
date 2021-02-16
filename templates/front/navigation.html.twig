@@ -1,0 +1,50 @@
+<header id="site-header">
+    <!-- Navbar -->
+    <nav class="navbar {% if singleProject is not defined %}fixed-top{% endif %} bg-white py-3">
+        <div class="container">
+            <ul class="navbar-nav logo">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}"><img class="img-fluid" src="/images/logo.png" alt="" /></a>
+                </li>
+            </ul>
+            {% if singleProject is not defined %}
+                <ul id="js-item-nav" class="navbar-nav flex-row d-none d-md-flex">
+                    <li class="nav-item mr-3 font-weight-bold">
+                        <a class="nav-link link" href="#about">A propos</a>
+                    </li>
+                    <li class="nav-item mr-3 font-weight-bold">
+                        <a class="nav-link link" href="#skills">Compétences</a>
+                    </li>
+                    <li class="nav-item mr-3 font-weight-bold">
+                        <a class="nav-link link" href="#projects">Projets</a>
+                    </li>
+                    <li class="nav-item font-weight-bold">
+                        <a class="nav-link link" href="#contact">Contact</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="ml-3 nav-item font-weight-bold">
+                            <a class="nav-link" href="{{ path('dashboard') }}">Admin</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div id="nav-icon" class="d-block d-md-none position-relative rotation-0">
+                    <span class="position-absolute rotation-0"></span>
+                    <span class="position-absolute rotation-0"></span>
+                    <span class="position-absolute rotation-0"></span>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- Navbar -->
+        
+    {% if singleProject is not defined %}
+        <!-- Jumbotron -->
+        <div class="banner d-flex">
+            <div class="container m-auto">
+                <h1 class="typo-title site-title text-primary-color mb-0 mt-4">Geoffroy COLPART</h1>
+                <p class="h5 text-primary-color-light">Développeur WEB basé à Réalmont en Occitanie</p>
+            </div>
+        </div>
+        <!-- Jumbotron -->
+    {% endif %}
+</header>

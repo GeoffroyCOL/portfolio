@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet | {{ project.title }}{% endblock %}
+
+{% block body %}
+
+{% include 'front/navigation.html.twig' %}
+
+    <div class="container my-5">
+        <div class="row">
+            <section class="section col-xl-7">
+                <header class="ratio ratio-16x9">
+                    <img class="img-fluid" src={{ vich_uploader_asset(project.featured, 'imageFile') }} alt="{{ project.featured.alt }}" />
+                </header>
+
+                <article class="my-3 my-md-4 my-xl-5">
+                    <header>
+                        <h2 class="typo-title h1">{{ project.title }}</h2>
+                        <div class="meta-data">
+                            <p class="mb-0">Crée le : <time class="text-primary-color-light">{{ project.createdAt | date('d/m/Y') }}</time></p>
+                            <p>
+                                {% for category in project.category %}
+                                    <span class="badge text-white bg-primary-color">{{ category.name }}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </header>
+
+                    <div class="text-break text-justify mt-4 mb-5">{{ project.content | raw }}</div>
+
+                    <footer class="text-center text-md-right">
+                        {% if project.github %}
+                            <a target="_blank" class="mr-2 link transition" href="{{ project.github }}"><i class="fab fa-github fa-lg"></i> Repository</a>
+                        {% endif %}
+
+                        {% if project.website %}
+                            <a target="_blank" class="link transition" href="{{ project.website }}"><i class="fas fa-globe"></i> Projet</a>
+                        {% endif %}
+                    </footer>
+                </article>
+            </section>
+
+            <aside class="col-xl-4 offset-xl-1 position-relative">
+                <div class="position-sticky top-10">
+                    <header>
+                        <h3>Dans la même catégorie</h3>
+                    </header>
+
+                    <div>
+                    
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+{% include 'front/footer.html.twig' %}
+
+{% endblock %}

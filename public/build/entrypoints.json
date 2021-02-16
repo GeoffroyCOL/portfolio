@@ -26,7 +26,8 @@
     },
     "app_navigation": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/app_navigation.js"
       ]
     }
   }

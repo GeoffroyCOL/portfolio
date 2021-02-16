@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Project;
+use App\Entity\Category;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -29,6 +30,11 @@ class ProjectService
     public function getAll(): ?array
     {
         return $this->repository->findAll();
+    }
+
+    public function getByCategory(Category $category)
+    {
+        return $this->repository->findBy(['category' => $category]);
     }
     
     /**

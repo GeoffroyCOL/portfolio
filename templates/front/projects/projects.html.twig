@@ -1,0 +1,38 @@
+<section id="projects" class="section">
+    <header class="section-title pt-3 text-center pt-md-5 text-md-left d-md-inline-block">
+        <h2 class="title typo-title text-primary-color">Projets</h2>
+        <div class="title-bars position-relative w-75 w-md-100 m-auto m-md-0">
+            <span class="bar position-absolute bar-1"></span>
+            <span class="bar position-absolute bar-2"></span>
+            <span class="bar position-absolute bar-3"></span>
+        </div>
+    </header>
+
+    {% if projects is defined %}
+    <div id="js-list-projects" class="row mt-over">
+        {% include 'front/projects/listProjects.html.twig' %}
+    </div>
+
+    <div id="js-response-exception"></div>
+
+    {% if number is defined and number > 1 %}
+        <nav id="pagination">
+            <ul class="pagination justify-content-center justify-content-md-start">
+                <li id="suiv" class="page-item d-none">
+                    <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                {% for i in 1..number %}
+                    <li class="page-item link {% if i == 1 %} pagination-active{% endif %}">
+                        <a class="page-link" data-indice="{{ i }}" href="#">{{ i }}</a>
+                    </li>
+                {% endfor %}
+
+                <li id="prev" class="page-item">
+                    <a class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+
+    {% endif %}
+</section>

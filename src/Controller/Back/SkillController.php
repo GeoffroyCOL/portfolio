@@ -31,7 +31,8 @@ class SkillController extends AbstractController
     public function listSkills(): Response
     {
         return $this->render('back/skill/listSkills.html.twig', [
-            'skills' => $this->skillService->getAll()
+            'skills'        => $this->skillService->getAll(),
+            'active_page'   => 'skill'
         ]);
     }
     

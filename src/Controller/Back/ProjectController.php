@@ -32,7 +32,8 @@ class ProjectController extends AbstractController
     public function listProjects(): Response
     {
         return $this->render('back/project/listProjects.html.twig', [
-            'projects' => $this->projectService->getAll()
+            'projects'      => $this->projectService->getAll(),
+            'active_page'   => 'project'
         ]);
     }
     
