@@ -1,12 +1,6 @@
 $(document).ready(function () {
     let compteur = 0;
 
-    $("#js-load-all-projets").on("click", function() {
-        $(this).html("<span class= 'spinner-border spinner-border-sm' role='status' aria-hidden='true'></span > Chargement...");
-        compteur++;
-        sendAjax("/ajax/projects/"+compteur);
-    });
-
     const toHtml = function (data) {
         let html = "";
         for (let project of data) {
@@ -30,9 +24,9 @@ $(document).ready(function () {
                             "</footer>" +
                         "</article>" +
                     "</div>";
-        };
+        }
         return html;
-    }
+    };
 
     let sendAjax = function (path) {
         $.ajax({
@@ -57,4 +51,10 @@ $(document).ready(function () {
             alert(error);
         });
     };
-})
+
+    $("#js-load-all-projets").on("click", function () {
+        $(this).html("<span class= 'spinner-border spinner-border-sm' role='status' aria-hidden='true'></span > Chargement...");
+        compteur++;
+        sendAjax("/ajax/projects/" + compteur);
+    });
+});
