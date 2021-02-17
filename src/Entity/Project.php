@@ -16,8 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      message="Ce projet existe déjà."
  * )
  */
-class Project
+class Project implements \JsonSerializable
 {
+    const NUMBER = 3;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -285,5 +287,15 @@ class Project
     {
         $this->category->removeElement($category);
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'title'     => $this->title,
+            'slug'      => $this->slug,
+            'featured'  => $this->featured->getImage(),
+            'category'  => $this->getCategory()->toArray()
+        );
     }
 }

@@ -10,29 +10,19 @@
 
     {% if projects is defined %}
     <div id="js-list-projects" class="row mt-over">
+        <p class="h5 mb-5 text-center text-md-left block-none">Réalisés avec : <span id="js-name-category" class="badge text-white bg-secondary-color"></span></p>
+
         {% include 'front/projects/listProjects.html.twig' %}
+
+        {# Button pour charger plus de projets #}
+        {% if number is defined and number > 0 %}
+        <div class="text-center text-md-left">
+            <button id="js-load-all-projets" class="btn bg-primary-color text-white">Plus de projets</button>
+        </div>
+        {% endif %}
     </div>
 
     <div id="js-response-exception"></div>
-
-    {% if number is defined and number > 1 %}
-        <nav id="pagination">
-            <ul class="pagination justify-content-center justify-content-md-start">
-                <li id="suiv" class="page-item d-none">
-                    <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-                </li>
-                {% for i in 1..number %}
-                    <li class="page-item link {% if i == 1 %} pagination-active{% endif %}">
-                        <a class="page-link" data-indice="{{ i }}" href="#">{{ i }}</a>
-                    </li>
-                {% endfor %}
-
-                <li id="prev" class="page-item">
-                    <a class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-                </li>
-            </ul>
-        </nav>
-    {% endif %}
 
     {% endif %}
 </section>

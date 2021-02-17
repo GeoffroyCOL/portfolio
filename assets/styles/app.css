@@ -3,6 +3,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.block-none {
+  display: none;
+}
+
+.opacity {
+  opacity: 0;
+}
+
 .transition {
   transition: all 0.2s;
 }
@@ -64,6 +72,11 @@ a:hover {
 
 .text-primary-color-dark {
   color: #002984;
+}
+
+/* Color secondary */
+.bg-secondary-color {
+  background-color: #673ab7
 }
 
 /* Navigation */

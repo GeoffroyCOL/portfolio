@@ -31,10 +31,25 @@ class ProjectService
     {
         return $this->repository->findAll();
     }
-
-    public function getByCategory(Category $category)
+    
+    /**
+     * @param  int $number
+     * @param  int $offset
+     * @return array|null
+     */
+    public function getProjectsByPagination(int $number, int $offset = 0): ?array
     {
-        return $this->repository->findBy(['category' => $category]);
+        return $this->repository->findBy([], [], $number, $offset);
+    }
+    
+    /**
+     * getNumber
+     *
+     * @return int
+     */
+    public function getNumber(): int
+    {
+        return $this->repository->numberProjects();
     }
     
     /**

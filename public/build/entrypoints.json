@@ -29,6 +29,13 @@
         "/build/runtime.js",
         "/build/app_navigation.js"
       ]
+    },
+    "app_ajax_project": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-object_js.js",
+        "/build/app_ajax_project.js"
+      ]
     }
   }
 }
