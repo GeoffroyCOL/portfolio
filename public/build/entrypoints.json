@@ -35,6 +35,12 @@
         "/build/runtime.js",
         "/build/app_ajax_project.js"
       ]
+    },
+    "app_ajax_contact": {
+      "js": [
+        "/build/runtime.js",
+        "/build/app_ajax_contact.js"
+      ]
     }
   }
 }

@@ -31,7 +31,7 @@ $(document).ready(function () {
     let sendAjax = function (path) {
         $.ajax({
             url: path,
-            type: "GET",
+            type: "POST",
             dataType: "json",
         })
 

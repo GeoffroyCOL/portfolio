@@ -10,10 +10,8 @@
 
     {% if projects is defined %}
     <div id="js-list-projects" class="row mt-over">
-        <p class="h5 mb-5 text-center text-md-left block-none">Réalisés avec : <span id="js-name-category" class="badge text-white bg-secondary-color"></span></p>
-
         {% include 'front/projects/listProjects.html.twig' %}
-
+        
         {# Button pour charger plus de projets #}
         {% if number is defined and number > 0 %}
         <div class="text-center text-md-left">
@@ -21,8 +19,6 @@
         </div>
         {% endif %}
     </div>
-
-    <div id="js-response-exception"></div>
 
     {% endif %}
 </section>

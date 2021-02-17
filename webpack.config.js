@@ -25,6 +25,7 @@ Encore
     .addEntry("app_delete_modal", "./assets/delete-modal.js")
     .addEntry("app_navigation", "./assets/navigation.js")
     .addEntry("app_ajax_project", "./assets/ajax-project.js")
+    .addEntry("app_ajax_contact", "./assets/ajax-contact.js")
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge("./assets/controllers.json")
