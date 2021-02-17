@@ -10,11 +10,6 @@ $(document).ready(function () {
             if (array[data] === "") {
                 error[data] = "Ce champs est vide";
             }
-            if (data == 'email') {
-                if (array[data] === "") {
-                    error[data] = "Votre email n'est pas au bon format";
-                }
-            }
         }
         return error;
     }
@@ -29,8 +24,8 @@ $(document).ready(function () {
         }
     }
 
-    const isError = function (data) {
-        for (var error in errors) {
+    const isErrors = function (data) {
+        for (let error in errors) {
             $("#js-error-" + error).show().html("ERREUR : " + errors[error]);
         }
     }
@@ -58,14 +53,6 @@ $(document).ready(function () {
         });
     };
 
-    /**
-     * @param {*} email 
-     */
-    const isEmail = function (email) {
-        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        return regex.test(email);
-    }
-
     const hideError = function () {
         $("#js-error-name").hide().html();
         $("#js-error-lastname").hide().html();
@@ -81,18 +68,17 @@ $(document).ready(function () {
 
         //tableau des données du formulaire
         let contact = {
-            'name': $("#name").val(),
-            'lastname': $("#lastname").val(),
-            'email': $("#email").val(),
-            'message': $("#message").val(),
+            "name": $("#name").val(),
+            "lastname": $("#lastname").val(),
+            "email": $("#email").val(),
+            "message": $("#message").val()
         }
 
         //pour signaler que le formulaire st en cours de traitement
         $("#js-send-button").html("<span class= 'spinner-border spinner-border-sm' role='status' aria-hidden='true'></span > En cours d'envoi ...");
 
         //On verifie si erreurs
-        //let errors = isErrors(contact);
-        let errors = {};
+        let errors = isErrors(contact);
 
         //On traite
         if (!jQuery.isEmptyObject(errors)) {
