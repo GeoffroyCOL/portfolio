@@ -6,7 +6,7 @@ $(document).ready(function () {
      */
     const isErrors = function (array) {
         let error = {};
-        for (var data in array) {
+        for (let data in array) {
             if (array[data] === "") {
                 error[data] = "Ce champs est vide";
             }
@@ -19,7 +19,7 @@ $(document).ready(function () {
      * @param {*} errors 
      */
     const showError = function (errors) {
-        for (var error in errors) {
+        for (let error in errors) {
             $("#js-error-" + error).show().html("ERREUR : " + errors[error]);
         }
     }

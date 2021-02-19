@@ -8,6 +8,7 @@
 /public/uploads/
 /var/
 /vendor/
+/config/packages/swiftmailer.yaml
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
