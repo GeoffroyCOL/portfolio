@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Project;
 use App\Service\SkillService;
 use App\Service\SocialService;
 use App\Service\ProjectService;
@@ -28,9 +29,10 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('front/home/index.html.twig', [
-            'socials' => $this->socialService->getAll(),
-            'skills' => $this->skillService->getAll(),
-            'projects' => $this->projectService->getAll()
+            'socials'   => $this->socialService->getAll(),
+            'skills'    => $this->skillService->getAll(),
+            'projects'  => $this->projectService->getProjectsByPagination(Project::NUMBER),
+            'number'    => $this->projectService->getNumber() - Project::NUMBER
         ]);
     }
 }

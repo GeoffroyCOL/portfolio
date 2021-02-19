@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *      message="Cette catégorie existe déjà."
  * )
  */
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -123,5 +123,13 @@ class Category
         }
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'name'  => $this->name,
+            'slug'  => $this->slug
+        );
     }
 }

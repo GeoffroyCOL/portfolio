@@ -8,39 +8,50 @@
         </div>
     </header>
 
+    <div id="js-response-formulaire" class="block-none alert alert-dismissible fade mt-5" role="alert">
+        <p class="mb-0"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <div id="formulaireContact" class="mt-over">
         <form method="POST" class="w-100">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-outline mb-4">
-                        <input type="text" id="name" class="form-control" />
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <input type="text" id="name" name="name" class="form-control" />
                         <label class="form-label" for="name">Nom</label>
                     </div>
+                    <small class="text-danger block-none" id="js-error-name"></small>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-outline mb-4">
-                        <input type="text" id="lastname" class="form-control" />
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <input type="text" id="lastname" name="lastname" class="form-control" />
                         <label class="form-label" for="lastname">Prénom</label>
                     </div>
+                    <small class="text-danger block-none" id="js-error-lastname"></small>
                 </div>
 
-                <div class="col-12">
-                    <div class="form-outline mb-4">
-                        <input type="email" id="email" class="form-control" />
+                <div class="col-12 mb-4">
+                    <div class="form-outline">
+                        <input type="email" id="email" name="email" class="form-control" />
                         <label class="form-label" for="email">Adresse email</label>
                     </div>
+                    <small class="text-danger block-none" id="js-error-email"></small>
                 </div>
 
-                <div class="col-12">
-                    <div class="form-outline mb-4">
-                        <textarea class="form-control" id="message" rows="7"></textarea>
+                <div class="col-12 mb-4">
+                    <div class="form-outline">
+                        <textarea class="form-control" name="message" id="message" rows="7"></textarea>
                         <label class="form-label" for="message">Message</label>
                     </div>
+                    <small class="text-danger block-none" id="js-error-message"></small>
                 </div>
 
                 <div class="text-center text-md-right">
-                    <button type="submit" class="btn btn-outline-card">Envoyer</button>
+                    <button id="js-send-button" type="submit" class="btn btn-outline-card">Envoyer</button>
                 </div>
             </div>
         </form>

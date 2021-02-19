@@ -8,7 +8,7 @@
                 <h3 class="mb-2 typo-title text-primary-color-dark">{{ project.title }}</h3>
                 <p class="mb-4">
                 {% for category in project.category %}
-                    <a href="#" class="badge text-white bg-primary-color">{{ category.name }}</a>
+                    <span data-category="{{ category.slug }}" class="js-button-category badge text-white bg-primary-color">{{ category.name }}</span>
                 {% endfor %}
                 </p>
             </div>
